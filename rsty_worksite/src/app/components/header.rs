@@ -1,3 +1,5 @@
+use std::thread::Scope;
+
 use leptos::*;
 
 #[component]
