@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Leptos App</title>
-</head>
-<body>
-    <div id="root"></div>
-    <script type="module" src="main.js"></script>
-<script>"use strict";
+<html>
+  <head>
+<link rel="modulepreload" href="/rsty_worksite-cc04871e21981528.js" crossorigin=anonymous integrity="sha384-DqgTI3yyuHAe9lWbl+pBk60Jz8M5bpGsZP8aEsJTqfj3Kb0J6IupB0VjV8V+Buuo">
+<link rel="preload" href="/rsty_worksite-cc04871e21981528_bg.wasm" crossorigin=anonymous integrity="sha384-FqAQ+/7QKFeeAlLKx6zkWH8ovjW4n7sON3fJxAj+5TNMGnHBN6ut9lnCt/nWe+dw" as="fetch" type="application/wasm"></head>
+  <body>
+<script type="module" nonce="u4pQgl1qNc7CctcOL1UeCQ==">
+import init, * as bindings from '/rsty_worksite-cc04871e21981528.js';
+const wasm = await init('/rsty_worksite-cc04871e21981528_bg.wasm');
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script><script>"use strict";
 
 (function () {
 
