@@ -1,8 +1,14 @@
 use leptos::*;
-use app::App;
+mod components;  // Include the components module
 
-mod app;
+#[component]
+fn App() -> impl IntoView {
+    view! {
+        <components::button::Button title="Click Me".to_string() />
+    }
+}
 
 fn main() {
     mount_to_body(|| view! { <App /> });
+    console_error_panic_hook::set_once();
 }
