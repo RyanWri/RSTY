@@ -1,14 +1,22 @@
 use leptos::*;
-mod components;  // Include the components module
+use leptos_router::*;
+use log::Level;
+
+mod components;
 
 #[component]
 fn App() -> impl IntoView {
+    let button_title: String = "Click Me RSTY!".to_string();
     view! {
-        <components::button::Button title="Click Me".to_string() />
+        <Router>
+            <Route path="/" view=move || view! { <components::button::Button title={button_title.clone()} /> } />
+            <Route path="/sound" view=|| view! { <components::sound::SoundPage /> } />
+        </Router>
     }
 }
 
 fn main() {
-    mount_to_body(|| view! { <App /> });
-    console_error_panic_hook::set_once();
+    console_log::init_with_level(Level::Debug).expect("error initializing log");
+    console_error_panic_hook::set_once(); // Logs panics to the browser's console
+    mount_to_body(App);
 }
