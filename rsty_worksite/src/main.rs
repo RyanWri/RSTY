@@ -1,22 +1,44 @@
 use leptos::*;
-use leptos_router::*;
-use log::Level;
 
-mod components;
+#[component]
+fn Home() -> impl IntoView {
+    view! {
+        <h1>"Hello, Leptos! (Home Page)"</h1>
+    }
+}
+
+#[component]
+fn About() -> impl IntoView {
+    view! {
+        <h1>"Hello, Leptos! (About Page)"</h1>
+    }
+}
 
 #[component]
 fn App() -> impl IntoView {
-    let button_title: String = "Click Me RSTY!".to_string();
+    let current_path = window().location().pathname().unwrap();
+
     view! {
-        <Router>
-            <Route path="/" view=move || view! { <components::button::Button title={button_title.clone()} /> } />
-            <Route path="/sound" view=|| view! { <components::sound::SoundPage /> } />
-        </Router>
+        <>
+            <nav>
+                <a href="/">"Home"</a>
+                <a href="/about">"About"</a>
+            </nav>
+            <main>
+                {
+                    if current_path == "/" {
+                        view! { <Home /> }.into_view()
+                    } else if current_path == "/about" {
+                        view! { <About /> }.into_view()
+                    } else {
+                        view! { <h1>"404 - Not Found"</h1> }.into_view()
+                    }
+                }
+            </main>
+        </>
     }
 }
 
 fn main() {
-    console_log::init_with_level(Level::Debug).expect("error initializing log");
-    console_error_panic_hook::set_once(); // Logs panics to the browser's console
-    mount_to_body(App);
+    mount_to_body(|| view! { <App /> });
 }
