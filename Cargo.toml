@@ -1,0 +1,12 @@
+[package]
+name = "RSTY"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+reqwest = { version = "0.11", features = ["json", "blocking"] }
+scraper = "0.13"
+tokio = { version = "1", features = ["full"] }
+url = "2"
+polars = { version = "0.23", features = ["lazy"] }
+serde = { version = "1", features = ["derive"] }
